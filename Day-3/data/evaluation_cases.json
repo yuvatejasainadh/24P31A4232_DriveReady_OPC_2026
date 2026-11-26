@@ -1,0 +1,46 @@
+[
+  {
+    "test_id": "J01",
+    "business_profile": "dripzoid",
+    "prior_queries": ["Show me black hoodies."],
+    "user_query": "Which one is the cheapest?",
+    "expected_intent": "pricing_inquiry",
+    "expected_tool": "product_search",
+    "expected_entity": {"product_name": "black hoodie"},
+    "expected_response_type": "grounded_answer",
+    "must_include": ["899"]
+  },
+  {
+    "test_id": "J02",
+    "business_profile": "dripzoid",
+    "prior_queries": [],
+    "user_query": "Is Cash on Delivery available?",
+    "expected_intent": "general_inquiry",
+    "expected_tool": "knowledge_base_search",
+    "expected_entity": {},
+    "expected_response_type": "grounded_answer",
+    "must_include": ["5,000"]
+  },
+  {
+    "test_id": "J03",
+    "business_profile": "edusmart",
+    "prior_queries": [],
+    "user_query": "Are live classes recorded if I miss a session?",
+    "expected_intent": "general_inquiry",
+    "expected_tool": "knowledge_base_search",
+    "expected_entity": {},
+    "expected_response_type": "grounded_answer",
+    "must_include": ["12 months"]
+  },
+  {
+    "test_id": "J04",
+    "business_profile": "edusmart",
+    "prior_queries": [],
+    "user_query": "Check enrollment ES9999.",
+    "expected_intent": "order_status",
+    "expected_tool": "order_lookup",
+    "expected_entity": {"order_id": "ES9999"},
+    "expected_response_type": "not_found",
+    "must_include": ["No order record found"]
+  }
+]
