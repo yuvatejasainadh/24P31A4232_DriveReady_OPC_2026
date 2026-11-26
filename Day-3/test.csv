@@ -1,0 +1,5 @@
+question,expected_intent,must_include
+"Can you tell me your store opening hours?",business_information,""
+"I want to check the status of my order",order_support,""
+"Can I book an appointment?",booking,""
+"Please connect me to a human representative",human_handoff,""
