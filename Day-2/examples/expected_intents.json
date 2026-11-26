@@ -1,0 +1,73 @@
+[
+  {
+    "business_id": "dripzoid",
+    "query": "Find black hoodies under 1000",
+    "expected_intent": "product_inquiry",
+    "expected_tool": "product_search",
+    "expected_entities": {
+      "product_name": "black hoodie",
+      "price": 1000.0
+    }
+  },
+  {
+    "business_id": "dripzoid",
+    "query": "Where is my order DZ1024?",
+    "expected_intent": "order_status",
+    "expected_tool": "order_lookup",
+    "expected_entities": {
+      "order_id": "DZ1024"
+    }
+  },
+  {
+    "business_id": "dripzoid",
+    "query": "I want a refund for my order",
+    "expected_intent": "refund_request",
+    "expected_tool": "business_info",
+    "expected_entities": {
+      "requested_action": "request_refund"
+    }
+  },
+  {
+    "business_id": "dripzoid",
+    "query": "What are your business hours?",
+    "expected_intent": "business_hours",
+    "expected_tool": "business_info",
+    "expected_entities": {
+      "requested_action": "get_business_hours"
+    }
+  },
+  {
+    "business_id": "dripzoid",
+    "query": "Can I check available styling appointment slots?",
+    "expected_intent": "appointment_booking",
+    "expected_tool": "appointment_availability",
+    "expected_entities": {
+      "requested_action": "check_appointment_availability"
+    }
+  },
+  {
+    "business_id": "edusmart",
+    "query": "Tell me about the Python & AI Agent Foundations Bootcamp",
+    "expected_intent": "course_information",
+    "expected_tool": "product_search",
+    "expected_entities": {
+      "course_name": "Python & AI Agent Foundations Bootcamp"
+    }
+  },
+  {
+    "business_id": "edusmart",
+    "query": "Where is my enrollment order ES2041?",
+    "expected_intent": "order_status",
+    "expected_tool": "order_lookup",
+    "expected_entities": {
+      "order_id": "ES2041"
+    }
+  },
+  {
+    "business_id": "dripzoid",
+    "query": "xyz123???",
+    "expected_intent": "unknown",
+    "expected_tool": null,
+    "expected_entities": {}
+  }
+]

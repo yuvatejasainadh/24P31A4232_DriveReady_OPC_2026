@@ -1,0 +1,382 @@
+Day 2 - Universal Business AI Agent (Structured Outputs, Tools & Memory)
+Execution Mode: Demo mode requested via --demo flag.
+Active Business: Dripzoid (E-commerce / Fashion)
+
+============================================================================
+TASK 1: Business Intent Classification (Dripzoid)
+============================================================================
+
+Query: Where is my order DZ1024?
+{
+  "intent": "order_status",
+  "confidence": 0.96,
+  "entities": {
+    "order_id": "DZ1024",
+    "requested_action": "check_delivery_status"
+  },
+  "requires_clarification": false
+}
+
+Query: Find black hoodies under 1000
+{
+  "intent": "product_inquiry",
+  "confidence": 0.94,
+  "entities": {
+    "product_name": "black hoodie",
+    "product_category": "Hoodies & Sweatshirts",
+    "price": 1000.0,
+    "requested_action": "search_catalog"
+  },
+  "requires_clarification": false
+}
+
+Query: I want a refund for my order
+{
+  "intent": "refund_request",
+  "confidence": 0.93,
+  "entities": {
+    "requested_action": "request_refund"
+  },
+  "requires_clarification": false
+}
+
+Query: xyz123???
+{
+  "intent": "unknown",
+  "confidence": 0.35,
+  "entities": {
+    "order_id": "XYZ123"
+  },
+  "requires_clarification": true
+}
+
+============================================================================
+TASK 2: Structured Information Extraction (Dripzoid)
+============================================================================
+
+Input: I want to check my order DZ1024 and know when my black hoodie will arrive.
+{
+  "order_id": "DZ1024",
+  "product_name": "black hoodie",
+  "product_category": "Hoodies & Sweatshirts",
+  "requested_action": "check_delivery_status"
+}
+
+Input: Hi, my name is Sainadh, email sainadh@example.com. Can I schedule a slot on 2026-11-28 at 4:00 PM?
+{
+  "customer_name": "Sainadh",
+  "email": "sainadh@example.com",
+  "date": "2026-11-28",
+  "appointment_time": "4:00 PM",
+  "requested_action": "check_appointment_availability"
+}
+
+============================================================================
+TASK 3: Business Tool Registry & Direct Execution (Dripzoid)
+============================================================================
+Registered Allowlisted Tools: ['product_search', 'business_info', 'order_lookup', 'appointment_availability', 'knowledge_base_search']
+
+Tool: product_search | Args: {'query': 'black hoodie', 'max_price': 1000} | Status: success (0.1 ms)
+{
+  "business": "Dripzoid",
+  "filters": {
+    "query": "black hoodie",
+    "category": "",
+    "max_price": 1000.0,
+    "sort_by": null
+  },
+  "count": 2,
+  "items": [
+    {
+      "item": "Dripzoid Essential Black Hoodie",
+      "category": "Hoodies & Sweatshirts",
+      "color": "Black",
+      "price": "INR 899",
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "stock_status": "In stock"
+    },
+    {
+      "item": "Dripzoid Midnight Black Zip Hoodie",
+      "category": "Hoodies & Sweatshirts",
+      "color": "Black",
+      "price": "INR 999",
+      "sizes": [
+        "M",
+        "L",
+        "XL"
+      ],
+      "stock_status": "In stock"
+    }
+  ]
+}
+
+Tool: business_info | Args: {'topic': 'hours'} | Status: success (0.01 ms)
+{
+  "business": "Dripzoid",
+  "industry": "E-commerce / Fashion",
+  "support_hours": "Monday to Saturday, 9:00 AM to 7:00 PM IST",
+  "contact": "support@dripzoid.example.com",
+  "services": [
+    "Online clothing shopping",
+    "Order status tracking",
+    "Standard and express delivery",
+    "Size exchange and returns"
+  ],
+  "policies": {}
+}
+
+Tool: order_lookup | Args: {'order_id': 'DZ1024'} | Status: success (0.07 ms)
+{
+  "found": true,
+  "is_mock_data": true,
+  "order_id": "DZ1024",
+  "business": "Dripzoid",
+  "order": {
+    "order_id": "DZ1024",
+    "item": "Dripzoid Essential Black Hoodie (Size L)",
+    "status": "In transit",
+    "estimated_delivery": "2026-11-28",
+    "carrier": "MockExpress Logistics",
+    "note": "Mock order record for Day 2 demonstration."
+  }
+}
+
+Tool: order_lookup | Args: {'order_id': 'UNKNOWN999'} | Status: not_found (0.01 ms)
+{
+  "found": false,
+  "is_mock_data": true,
+  "order_id": "UNKNOWN999",
+  "business": "Dripzoid",
+  "message": "No order record found for 'UNKNOWN999' in Dripzoid mock records."
+}
+
+Tool: order_lookup | Args: {'order_id': ''} | Status: validation_error (0.0 ms)
+Message: 'order_id' cannot be empty or whitespace.
+
+Tool: appointment_availability | Args: {} | Status: success (0.01 ms)
+{
+  "business": "Dripzoid",
+  "booking_performed": false,
+  "is_mock_data": true,
+  "available_count": 2,
+  "slots": [
+    {
+      "slot_id": "DZ-FIT-01",
+      "date": "2026-11-28",
+      "time": "11:00 AM IST",
+      "topic": "Virtual Styling & Size Consultation",
+      "available": true
+    },
+    {
+      "slot_id": "DZ-FIT-02",
+      "date": "2026-11-28",
+      "time": "04:00 PM IST",
+      "topic": "Virtual Styling & Size Consultation",
+      "available": true
+    }
+  ],
+  "note": "Availability preview only. No appointment has been booked."
+}
+
+Tool: knowledge_base_search | Args: {'query': 'refund'} | Status: success (0.04 ms)
+{
+  "business": "Dripzoid",
+  "query": "refund",
+  "faqs": [
+    {
+      "question": "Can I exchange a hoodie for a different size?",
+      "answer": "Yes. Unworn items with original tags can be returned or exchanged within 7 days of delivery."
+    }
+  ],
+  "policies": {},
+  "services": [
+    "Online clothing shopping",
+    "Order status tracking",
+    "Standard and express delivery",
+    "Size exchange and returns"
+  ]
+}
+
+============================================================================
+TASK 4: End-to-End Agent Tool Selection Workflow (Dripzoid)
+============================================================================
+
+User: Find black hoodies under 1000
+-> Intent: product_inquiry (conf=0.94) | Tool: product_search | Status: success
+Agent:
+[MOCK DEMO | Dripzoid] Found 2 matching item(s) in Dripzoid:
+- item: Dripzoid Essential Black Hoodie; category: Hoodies & Sweatshirts; color: Black; price: INR 899; sizes: S, M, L, XL; stock_status: In stock
+- item: Dripzoid Midnight Black Zip Hoodie; category: Hoodies & Sweatshirts; color: Black; price: INR 999; sizes: M, L, XL; stock_status: In stock
+
+User: Where is my order DZ1024?
+-> Intent: order_status (conf=0.96) | Tool: order_lookup | Status: success
+Agent:
+[MOCK DEMO | Dripzoid] (Mock Order Lookup) Order `DZ1024` for **Dripzoid Essential Black Hoodie (Size L)** is currently **In transit**. Estimated delivery/access: 2026-11-28 (Carrier/Portal: MockExpress Logistics).
+
+User: Can I check available styling appointment slots?
+-> Intent: appointment_booking (conf=0.92) | Tool: appointment_availability | Status: success
+Agent:
+[MOCK DEMO | Dripzoid] Available slots (preview only; no booking has been made):
+- [DZ-FIT-01] 2026-11-28 at 11:00 AM IST — Virtual Styling & Size Consultation
+- [DZ-FIT-02] 2026-11-28 at 04:00 PM IST — Virtual Styling & Size Consultation
+
+============================================================================
+TASK 5: Conversational Memory & Session Isolation (Dripzoid)
+============================================================================
+[Session: user_alpha | Turn 1] Show me black hoodies.
+[MOCK DEMO | Dripzoid] Found 3 matching item(s) in Dripzoid:
+- item: Dripzoid Essential Black Hoodie; category: Hoodies & Sweatshirts; color: Black; price: INR 899; sizes: S, M, L, XL; stock_status: In stock
+- item: Dripzoid Midnight Black Zip Hoodie; category: Hoodies & Sweatshirts; color: Black; price: INR 999; sizes: M, L, XL; stock_status: In stock
+- item: Dripzoid Classic Black Pullover Hoodie; category: Hoodies & Sweatshirts; color: Black; price: INR 1,299; sizes: S, M, L; stock_status: In stock
+
+[Session: user_alpha | Turn 2] Which one is the cheapest?
+[MOCK DEMO | Dripzoid] The cheapest matching option is:
+- item: Dripzoid Essential Black Hoodie, category: Hoodies & Sweatshirts, color: Black, price: INR 899, sizes: S, M, L, XL, stock_status: In stock
+
+[Session: user_beta (Isolated)] Which one is the cheapest?
+[MOCK DEMO | Dripzoid] The cheapest matching option is:
+- item: Dripzoid Essential Heavyweight Tee, category: T-Shirts, price: INR 799, sizes: XS, S, M, L, XL, stock_status: In stock
+
+[Stateless Override on user_alpha] Which one is the cheapest?
+[MOCK DEMO | Dripzoid] The cheapest matching option is:
+- item: Dripzoid Essential Heavyweight Tee, category: T-Shirts, price: INR 799, sizes: XS, S, M, L, XL, stock_status: In stock
+
+Memory Snapshot (user_alpha): mode=session_window, window_size=4, stored_messages=4
+Cleared user_alpha memory: True | Remaining sessions: ['user_beta']
+
+============================================================================
+TASK 6: Multi-Business Runtime Switching (Same Agent Core)
+============================================================================
+
+--- Business: Dripzoid (E-commerce / Fashion) ---
+Tool: business_info | Status: success
+[MOCK DEMO | Dripzoid] Verified Dripzoid information:
+- Support Hours: Monday to Saturday, 9:00 AM to 7:00 PM IST
+- Contact: support@dripzoid.example.com
+- Returns And Exchanges: Unworn items with original tags can be returned or exchanged within 7 days of delivery. Customized or clearance items are final sale.
+- Note: I cannot automatically process refunds or cancellations here; please contact support@dripzoid.example.com with your order ID.
+
+--- Business: EduSmart (Education / EdTech) ---
+Tool: business_info | Status: success
+[MOCK DEMO | EduSmart] Verified EduSmart information:
+- Support Hours: Monday to Friday, 10:00 AM to 6:00 PM IST
+- Contact: admissions@edusmart.example.com
+- Refund Policy: A 100% refund is available within 7 days of cohort start if less than 20% of course content has been accessed.
+- Note: I cannot automatically process refunds or cancellations here; please contact admissions@edusmart.example.com with your order ID.
+
+============================================================================
+TASK 7: Structured Execution Logs & Agent Evaluation
+============================================================================
+Sample Structured Execution Logs:
+{
+  "timestamp_utc": "2026-11-26T10:46:29+00:00",
+  "session_id": "log-demo",
+  "selected_business": "dripzoid",
+  "user_query": "Find black hoodies under 1000",
+  "predicted_intent": "product_inquiry",
+  "confidence": 0.94,
+  "extracted_entities": {
+    "product_name": "black hoodie",
+    "product_category": "Hoodies & Sweatshirts",
+    "price": 1000.0,
+    "requested_action": "search_catalog"
+  },
+  "selected_tool": "product_search",
+  "tool_arguments": {
+    "query": "black hoodie",
+    "category": "Hoodies & Sweatshirts",
+    "max_price": 1000.0,
+    "sort_by": null
+  },
+  "tool_result": {
+    "tool_name": "product_search",
+    "status": "success",
+    "data": {
+      "business": "Dripzoid",
+      "filters": {
+        "query": "black hoodie",
+        "category": "Hoodies & Sweatshirts",
+        "max_price": 1000.0,
+        "sort_by": null
+      },
+      "count": 2,
+      "items": [
+        {
+          "item": "Dripzoid Essential Black Hoodie",
+          "category": "Hoodies & Sweatshirts",
+          "color": "Black",
+          "price": "INR 899",
+          "sizes": [
+            "S",
+            "M",
+            "L",
+            "XL"
+          ],
+          "stock_status": "In stock"
+        },
+        {
+          "item": "Dripzoid Midnight Black Zip Hoodie",
+          "category": "Hoodies & Sweatshirts",
+          "color": "Black",
+          "price": "INR 999",
+          "sizes": [
+            "M",
+            "L",
+            "XL"
+          ],
+          "stock_status": "In stock"
+        }
+      ]
+    },
+    "message": "Executed 'product_search' successfully.",
+    "duration_ms": 0.04
+  },
+  "execution_status": "success",
+  "execution_duration_ms": 0.18
+}
+{
+  "timestamp_utc": "2026-11-26T10:46:29+00:00",
+  "session_id": "log-demo",
+  "selected_business": "dripzoid",
+  "user_query": "Where is my order DZ1024?",
+  "predicted_intent": "order_status",
+  "confidence": 0.96,
+  "extracted_entities": {
+    "order_id": "DZ1024",
+    "requested_action": "check_delivery_status"
+  },
+  "selected_tool": "order_lookup",
+  "tool_arguments": {
+    "order_id": "DZ1024"
+  },
+  "tool_result": {
+    "tool_name": "order_lookup",
+    "status": "success",
+    "data": {
+      "found": true,
+      "is_mock_data": true,
+      "order_id": "DZ1024",
+      "business": "Dripzoid",
+      "order": {
+        "order_id": "DZ1024",
+        "item": "Dripzoid Essential Black Hoodie (Size L)",
+        "status": "In transit",
+        "estimated_delivery": "2026-11-28",
+        "carrier": "MockExpress Logistics",
+        "note": "Mock order record for Day 2 demonstration."
+      }
+    },
+    "message": "Executed 'order_lookup' successfully.",
+    "duration_ms": 0.0
+  },
+  "execution_status": "success",
+  "execution_duration_ms": 0.11
+}
+
+Evaluation Summary:
+  Total Cases: 8 | Intent Accuracy: 1.00 | Tool Selection Accuracy: 1.00 | Entity Accuracy: 1.00

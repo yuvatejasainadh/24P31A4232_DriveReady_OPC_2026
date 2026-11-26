@@ -1,0 +1,172 @@
+{
+  "schema_version": "1.0",
+  "businesses": {
+    "dripzoid": {
+      "supported_intents": [
+        "product_inquiry",
+        "order_status",
+        "pricing_inquiry",
+        "refund_request",
+        "cancellation_request",
+        "appointment_booking",
+        "business_hours",
+        "contact_information",
+        "complaint",
+        "general_inquiry",
+        "unknown"
+      ],
+      "additional_catalog": [
+        {
+          "item": "Dripzoid Essential Black Hoodie",
+          "category": "Hoodies & Sweatshirts",
+          "color": "Black",
+          "price": "INR 899",
+          "sizes": ["S", "M", "L", "XL"],
+          "stock_status": "In stock"
+        },
+        {
+          "item": "Dripzoid Midnight Black Zip Hoodie",
+          "category": "Hoodies & Sweatshirts",
+          "color": "Black",
+          "price": "INR 999",
+          "sizes": ["M", "L", "XL"],
+          "stock_status": "In stock"
+        },
+        {
+          "item": "Dripzoid Classic Black Pullover Hoodie",
+          "category": "Hoodies & Sweatshirts",
+          "color": "Black",
+          "price": "INR 1,299",
+          "sizes": ["S", "M", "L"],
+          "stock_status": "In stock"
+        }
+      ],
+      "faqs": [
+        {
+          "question": "How do I qualify for free standard shipping at Dripzoid?",
+          "answer": "Orders above INR 1,499 qualify for free standard shipping across India (3-5 business days).",
+          "keywords": ["free", "shipping", "delivery", "1499"]
+        },
+        {
+          "question": "Can I exchange a hoodie for a different size?",
+          "answer": "Yes. Unworn items with original tags can be returned or exchanged within 7 days of delivery.",
+          "keywords": ["exchange", "size", "return", "refund", "hoodie", "tags"]
+        },
+        {
+          "question": "Is Cash on Delivery available?",
+          "answer": "Yes, Cash on Delivery (COD) is available for orders up to INR 5,000 along with UPI, cards, and net banking.",
+          "keywords": ["cod", "cash on delivery", "payment", "upi"]
+        }
+      ],
+      "orders": {
+        "DZ1024": {
+          "order_id": "DZ1024",
+          "item": "Dripzoid Essential Black Hoodie (Size L)",
+          "status": "In transit",
+          "estimated_delivery": "2026-11-28",
+          "carrier": "MockExpress Logistics",
+          "note": "Mock order record for Day 2 demonstration."
+        },
+        "DZ1025": {
+          "order_id": "DZ1025",
+          "item": "Dripzoid Relaxed Cargo Trousers (Size 32)",
+          "status": "Delivered",
+          "estimated_delivery": "2026-11-24",
+          "carrier": "MockExpress Logistics",
+          "note": "Mock order record for Day 2 demonstration."
+        }
+      },
+      "appointment_slots": [
+        {
+          "slot_id": "DZ-FIT-01",
+          "date": "2026-11-28",
+          "time": "11:00 AM IST",
+          "topic": "Virtual Styling & Size Consultation",
+          "available": true
+        },
+        {
+          "slot_id": "DZ-FIT-02",
+          "date": "2026-11-28",
+          "time": "04:00 PM IST",
+          "topic": "Virtual Styling & Size Consultation",
+          "available": true
+        },
+        {
+          "slot_id": "DZ-FIT-03",
+          "date": "2026-11-29",
+          "time": "12:00 PM IST",
+          "topic": "Bulk / Custom Order Inquiry Call",
+          "available": false
+        }
+      ]
+    },
+    "edusmart": {
+      "supported_intents": [
+        "course_information",
+        "product_inquiry",
+        "order_status",
+        "pricing_inquiry",
+        "refund_request",
+        "cancellation_request",
+        "appointment_booking",
+        "business_hours",
+        "contact_information",
+        "complaint",
+        "general_inquiry",
+        "unknown"
+      ],
+      "additional_catalog": [
+        {
+          "item": "Generative AI Engineering Weekend Workshop",
+          "category": "AI Engineering",
+          "price": "INR 999",
+          "duration": "2 days (live hands-on)",
+          "prerequisites": "Basic Python syntax"
+        }
+      ],
+      "faqs": [
+        {
+          "question": "Are live classes recorded if I miss a session?",
+          "answer": "Yes, all live sessions are recorded and remain accessible on the student portal for 12 months.",
+          "keywords": ["recording", "missed", "live", "portal"]
+        },
+        {
+          "question": "How do I get my completion certificate?",
+          "answer": "Verified digital certificates are issued after completing 80% attendance and passing the capstone project review.",
+          "keywords": ["certificate", "attendance", "capstone"]
+        },
+        {
+          "question": "What is the EduSmart refund policy?",
+          "answer": "A 100% refund is available within 7 days of cohort start if less than 20% of course content has been accessed.",
+          "keywords": ["refund", "cancel", "cohort", "20%"]
+        }
+      ],
+      "orders": {
+        "ES2041": {
+          "order_id": "ES2041",
+          "item": "Python & AI Agent Foundations Bootcamp",
+          "status": "Seat confirmed (Cohort starts 2026-12-01)",
+          "estimated_delivery": "Portal access active",
+          "carrier": "EduSmart Student Portal",
+          "note": "Mock enrollment record for Day 2 demonstration."
+        }
+      },
+      "appointment_slots": [
+        {
+          "slot_id": "ES-ADV-01",
+          "date": "2026-11-27",
+          "time": "03:00 PM IST",
+          "topic": "1-on-1 Admissions & Career Counseling",
+          "available": true
+        },
+        {
+          "slot_id": "ES-ADV-02",
+          "date": "2026-11-28",
+          "time": "05:30 PM IST",
+          "topic": "Capstone Project Mentorship Slot",
+          "available": true
+        }
+      ]
+    }
+  }
+}
