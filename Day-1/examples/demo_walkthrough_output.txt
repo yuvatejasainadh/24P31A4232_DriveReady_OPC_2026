@@ -1,0 +1,125 @@
+Day 1 - Universal Business AI Agent | SAI Labs
+Execution Mode: Demo mode requested via --demo flag.
+Loaded Profiles: dripzoid, edusmart (active: dripzoid)
+
+============================================================================
+TASK 1: LLM Fundamentals (Prompts, Temperature, System vs User)
+============================================================================
+Concept: An LLM predicts the next most likely token conditioned on context.
+
+1A. How Prompt Specificity Shapes Output:
+Vague Prompt Response:
+[MOCK DEMO] A large language model is a neural network trained on vast text datasets to predict the next token in a sequence given prior context.
+
+Structured Prompt Response:
+[MOCK DEMO] 1. An LLM predicts the next most likely token based on your prompt.
+2. System instructions set global rules, while user prompts pass the immediate task.
+3. It relies on patterns learned during training plus whatever context you supply.
+
+1B. Effect of Temperature (0.0 Deterministic vs 0.9 Creative):
+Temperature = 0.0:
+[MOCK DEMO | temp=low] 1. Everyday Streetwear, Built to Last.
+2. Clean Fits for Daily Wear.
+
+Temperature = 0.9:
+[MOCK DEMO | temp=high] 1. Drop Loud, Walk Proud — Urban Threads Reimagined!
+2. Midnight Concrete Meets Heavyweight Cotton Energy.
+
+1C. System Instructions vs User Prompt:
+Without System Instruction:
+[MOCK DEMO | no system role] Return policies vary by merchant. Please provide the specific store name or policy document you would like me to reference.
+
+With Dripzoid System Instruction:
+[MOCK DEMO | system=Dripzoid] At Dripzoid, unworn items with original tags can be returned or exchanged within 7 days of delivery.
+
+============================================================================
+TASK 2: Reusable Business Prompt Template
+============================================================================
+Rendered System Instruction:
+You are the official AI customer assistant for Dripzoid.
+Industry: E-commerce / Fashion
+Business Overview: Online clothing shopping platform offering curated streetwear, everyday essentials, and seasonal apparel collections.
+Required Tone: Friendly, stylish, clear, and helpful customer-support specialist
+
+Behavioral Rules:
+1. Stay strictly in character as the assistant for this business.
+2. Answer accurately using only verified business context provided in instructions.
+3. Never fabricate prices, policies, timelines, or product guarantees.
+4. If required facts are missing, state clearly that you do not have enough information.
+
+Rendered User Prompt:
+Customer Query for Dripzoid: What services do you provide and how can you help me today?
+
+Generated Response:
+[MOCK DEMO | Dripzoid] Online clothing shopping platform offering curated streetwear, everyday essentials, and seasonal apparel collections. Services: Online clothing shopping, Order status tracking, Standard and express delivery, Size exchange and returns. Featured offerings: Dripzoid Oversized Graphic Hoodie, Dripzoid Essential Heavyweight Tee, Dripzoid Relaxed Cargo Trousers.
+
+============================================================================
+TASK 3: Grounding & Hallucination Prevention (Dripzoid)
+============================================================================
+[Supported Query] How long does standard delivery take, and what is your return policy?
+Response:
+[MOCK DEMO | Dripzoid] Verified business information:
+- Shipping And Delivery: Standard delivery takes 3-5 business days across India. Express delivery takes 1-2 business days in metro cities for an extra INR 149. Orders above INR 1,499 qualify for free standard shipping.
+- Returns And Exchanges: Unworn items with original tags can be returned or exchanged within 7 days of delivery. Customized or clearance items are final sale.
+
+[Unsupported / Out-of-Scope Query] Do you offer 30-minute drone delivery and a lifetime warranty on hoodies?
+Response:
+[MOCK DEMO | Dripzoid] I do not have enough information in the provided Dripzoid knowledge base to confirm that. I cannot guess or invent unsupported policies, pricing, or timelines. Please contact support@dripzoid.example.com.
+
+============================================================================
+TASK 4: Stateless API vs Conversation History (Dripzoid)
+============================================================================
+--- 4A. Stateless Interaction (no shared history) ---
+Turn 1 User: Tell me about the Dripzoid Oversized Graphic Hoodie.
+Turn 1 Agent: [MOCK DEMO | Dripzoid] Here are the verified details:
+- item: Dripzoid Oversized Graphic Hoodie; category: Hoodies & Sweatshirts; price: INR 1,799; sizes: S, M, L, XL; stock status: In stock
+
+Turn 2 User: Does it qualify for free standard shipping?
+Turn 2 Agent (no memory): [MOCK DEMO | Dripzoid | Stateless] I do not have previous conversation context, so I cannot tell what item or topic you are referring to. Could you please specify the exact product, course, or policy?
+
+--- 4B. Conversation-Aware Interaction (passing prior turns) ---
+Turn 1 User: Tell me about the Dripzoid Oversized Graphic Hoodie.
+Turn 1 Agent: [MOCK DEMO | Dripzoid] Here are the verified details:
+- item: Dripzoid Oversized Graphic Hoodie; category: Hoodies & Sweatshirts; price: INR 1,799; sizes: S, M, L, XL; stock status: In stock
+
+Turn 2 User: Does it qualify for free standard shipping?
+Turn 2 Agent (with history): [MOCK DEMO | Dripzoid] Here are the verified details:
+- item: Dripzoid Oversized Graphic Hoodie; category: Hoodies & Sweatshirts; price: INR 1,799; sizes: S, M, L, XL; stock status: In stock
+- Shipping And Delivery: Standard delivery takes 3-5 business days across India. Express delivery takes 1-2 business days in metro cities for an extra INR 149. Orders above INR 1,499 qualify for free standard shipping.
+
+============================================================================
+TASK 5: Token Usage, Cost & Context Window Awareness
+============================================================================
+[Short Stateless Query | Model: gemini-2.5-flash (MOCK DEMO)]
+  - Input length (ESTIMATED): 2675 chars, 384 words, ~669 tokens
+  - Response length (ESTIMATED): 120 chars, 17 words, ~30 tokens
+  - API usage_metadata (ACTUAL): Unavailable in mock/demo mode (no live API call made; not fabricated)
+
+[Multi-Turn Grounded Query | Model: gemini-2.5-flash (MOCK DEMO)]
+  - Input length (ESTIMATED): 3162 chars, 447 words, ~791 tokens
+  - Response length (ESTIMATED): 319 chars, 45 words, ~80 tokens
+  - API usage_metadata (ACTUAL): Unavailable in mock/demo mode (no live API call made; not fabricated)
+
+Why Token Usage Matters:
+1. Cost: LLM APIs bill per input token (system prompt + knowledge base + chat history + user query) and per output token generated.
+2. Context Limits: Every model has a finite context window. Passing huge unpruned histories or massive knowledge bases increases latency, cost, and risk of hitting token limits.
+
+============================================================================
+TASK 6: Configurable Business Profiles (One Core, Multiple Industries)
+============================================================================
+
+--- Active Profile: Dripzoid (E-commerce / Fashion) ---
+Tone: Friendly, stylish, clear, and helpful customer-support specialist
+Query: What offerings do you have and what are your return or refund rules?
+Response:
+[MOCK DEMO | Dripzoid] Verified business information:
+- Featured Offerings: Dripzoid Oversized Graphic Hoodie, Dripzoid Essential Heavyweight Tee, Dripzoid Relaxed Cargo Trousers
+- Returns And Exchanges: Unworn items with original tags can be returned or exchanged within 7 days of delivery. Customized or clearance items are final sale.
+
+--- Active Profile: EduSmart (Education / EdTech) ---
+Tone: Encouraging, structured, academic, and concise student advisor
+Query: What offerings do you have and what are your return or refund rules?
+Response:
+[MOCK DEMO | EduSmart] Verified business information:
+- Featured Offerings: Python & AI Agent Foundations Bootcamp, Full-Stack Web Development Track, Data Analytics with SQL & Python
+- Refund Policy: A 100% refund is available within 7 days of cohort start if less than 20% of course content has been accessed.

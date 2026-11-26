@@ -1,0 +1,32 @@
+{
+  "dripzoid": {
+    "supported_queries": [
+      "What is the price of the Dripzoid Oversized Graphic Hoodie?",
+      "How long does standard delivery take and when is shipping free?",
+      "What is your return and exchange policy?"
+    ],
+    "unsupported_grounding_queries": [
+      "Do you offer 30-minute drone delivery?",
+      "Do Dripzoid hoodies come with a lifetime warranty?"
+    ],
+    "multi_turn_sequence": [
+      "Tell me about the Dripzoid Oversized Graphic Hoodie.",
+      "Does it qualify for free standard shipping?"
+    ]
+  },
+  "edusmart": {
+    "supported_queries": [
+      "What courses does EduSmart offer?",
+      "How do refunds work if I drop out early?",
+      "How do I earn a certificate?"
+    ],
+    "unsupported_grounding_queries": [
+      "Do you provide free laptops to enrolled students?",
+      "Is there a 100% job guarantee with hostel accommodation?"
+    ],
+    "multi_turn_sequence": [
+      "Tell me about the Python & AI Agent Foundations Bootcamp.",
+      "What are its prerequisites and duration?"
+    ]
+  }
+}

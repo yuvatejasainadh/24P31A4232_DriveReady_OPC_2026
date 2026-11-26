@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "default_profile": "sunrise_clinic",
+  "profiles": {
+    "sunrise_clinic": {
+      "business_id": "sunrise_clinic",
+      "business_name": "Sunrise Family Clinic",
+      "industry": "Healthcare / Outpatient Clinic",
+      "description": "Neighborhood general practice and preventive health clinic offering scheduled consultations and lab sample collection.",
+      "tone": "Calm, empathetic, clear, and non-diagnostic patient coordinator",
+      "services": [
+        "General physician appointments",
+        "Routine blood test sample collection",
+        "Vaccination scheduling"
+      ],
+      "support_topics": [
+        "Appointments",
+        "Clinic Hours",
+        "Lab Reports",
+        "Consultation Fees"
+      ],
+      "knowledge_base": {
+        "catalog": [
+          {
+            "item": "General Consultation",
+            "category": "Outpatient Visit",
+            "price": "INR 500",
+            "duration": "20 minutes"
+          }
+        ],
+        "policies": {
+          "emergency_disclaimer": "This assistant cannot provide medical diagnoses or emergency triage. For medical emergencies, call local emergency services immediately.",
+          "appointment_rescheduling": "Appointments can be rescheduled up to 4 hours prior to the slot without a fee."
+        },
+        "support_hours": "Monday to Saturday, 8:00 AM to 8:00 PM IST",
+        "contact": "care@sunriseclinic.example.com"
+      }
+    }
+  }
+}

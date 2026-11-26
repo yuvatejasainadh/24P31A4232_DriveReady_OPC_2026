@@ -1,0 +1,110 @@
+{
+  "schema_version": "1.0",
+  "default_profile": "dripzoid",
+  "profiles": {
+    "dripzoid": {
+      "business_id": "dripzoid",
+      "business_name": "Dripzoid",
+      "industry": "E-commerce / Fashion",
+      "description": "Online clothing shopping platform offering curated streetwear, everyday essentials, and seasonal apparel collections.",
+      "tone": "Friendly, stylish, clear, and helpful customer-support specialist",
+      "services": [
+        "Online clothing shopping",
+        "Order status tracking",
+        "Standard and express delivery",
+        "Size exchange and returns"
+      ],
+      "support_topics": [
+        "Products",
+        "Orders",
+        "Delivery",
+        "Returns"
+      ],
+      "knowledge_base": {
+        "catalog": [
+          {
+            "item": "Dripzoid Oversized Graphic Hoodie",
+            "category": "Hoodies & Sweatshirts",
+            "price": "INR 1,799",
+            "sizes": ["S", "M", "L", "XL"],
+            "stock_status": "In stock"
+          },
+          {
+            "item": "Dripzoid Essential Heavyweight Tee",
+            "category": "T-Shirts",
+            "price": "INR 799",
+            "sizes": ["XS", "S", "M", "L", "XL"],
+            "stock_status": "In stock"
+          },
+          {
+            "item": "Dripzoid Relaxed Cargo Trousers",
+            "category": "Bottoms",
+            "price": "INR 1,999",
+            "sizes": ["28", "30", "32", "34", "36"],
+            "stock_status": "Limited stock in size 34"
+          }
+        ],
+        "policies": {
+          "shipping_and_delivery": "Standard delivery takes 3-5 business days across India. Express delivery takes 1-2 business days in metro cities for an extra INR 149. Orders above INR 1,499 qualify for free standard shipping.",
+          "returns_and_exchanges": "Unworn items with original tags can be returned or exchanged within 7 days of delivery. Customized or clearance items are final sale.",
+          "order_tracking": "Customers receive an order ID and tracking link via email and SMS once the order ships within 24 hours of confirmation.",
+          "payment_methods": "Accepted payment methods are UPI, credit/debit cards, net banking, and Cash on Delivery (COD) for orders up to INR 5,000."
+        },
+        "support_hours": "Monday to Saturday, 9:00 AM to 7:00 PM IST",
+        "contact": "support@dripzoid.example.com"
+      }
+    },
+    "edusmart": {
+      "business_id": "edusmart",
+      "business_name": "EduSmart",
+      "industry": "Education / EdTech",
+      "description": "Career-focused online learning academy offering cohort-based courses, coding bootcamps, and certification guidance for college students and working professionals.",
+      "tone": "Encouraging, structured, academic, and concise student advisor",
+      "services": [
+        "Live cohort courses",
+        "Self-paced video modules",
+        "Project mentorship and code reviews",
+        "Course completion certificates"
+      ],
+      "support_topics": [
+        "Courses",
+        "Admissions",
+        "Schedules",
+        "Fees and Refunds"
+      ],
+      "knowledge_base": {
+        "catalog": [
+          {
+            "item": "Python & AI Agent Foundations Bootcamp",
+            "category": "AI Engineering",
+            "price": "INR 4,999",
+            "duration": "6 weeks (weekend live sessions)",
+            "prerequisites": "Basic programming logic; no prior AI experience required"
+          },
+          {
+            "item": "Full-Stack Web Development Track",
+            "category": "Software Engineering",
+            "price": "INR 7,499",
+            "duration": "10 weeks (3 evening sessions per week)",
+            "prerequisites": "Basic HTML and CSS familiarity"
+          },
+          {
+            "item": "Data Analytics with SQL & Python",
+            "category": "Data Science",
+            "price": "INR 5,999",
+            "duration": "8 weeks",
+            "prerequisites": "Spreadsheet basics"
+          }
+        ],
+        "policies": {
+          "enrollment": "Students enroll online by selecting a cohort start date and completing registration payment. Seats are confirmed immediately upon payment.",
+          "refund_policy": "A 100% refund is available within 7 days of cohort start if less than 20% of course content has been accessed.",
+          "certification": "Verified digital certificates are issued after completing 80% attendance and passing the capstone project review.",
+          "class_recordings": "All live sessions are recorded and remain accessible on the student portal for 12 months."
+        },
+        "support_hours": "Monday to Friday, 10:00 AM to 6:00 PM IST",
+        "contact": "admissions@edusmart.example.com"
+      }
+    }
+  }
+}
